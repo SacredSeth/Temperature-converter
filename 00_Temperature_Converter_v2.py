@@ -84,11 +84,8 @@ class Convertor():
         :return:
         """
 
-        # print("Min Temp: ", min_temp)
-
         # Retrieve temperature to be converted
         to_convert = self.temp_entry.get()
-        print("to convert", to_convert)
 
         # Reset label and entry box (if we had an error)
         self.answer_error.config(fg="#004C99", font=("Arial", "13", "bold"))
@@ -134,7 +131,6 @@ class Convertor():
 
         self.answer_error.config(text=answer_statement)
         self.all_calculations_list.append(answer_statement)
-        print(self.all_calculations_list)
 
 
     def to_help(self):
@@ -266,7 +262,7 @@ class HistoryExport:
                                    "in a text file. If the filename already exists, "
                                    "it will be overwritten!")
 
-        calculations = ""
+        # calculations = ""
 
         # label list (label text | format | bg)
         history_labels_list = [
@@ -324,8 +320,8 @@ class HistoryExport:
         file_name = f"temperature_{year}_{month}_{day}"
 
         # edit label so users know that their export has been done
-        success_string = ("Export Successful! The file is called"
-                          f"{file_name}.txt")
+        success_string = ("Export Successful! The file is called "
+                          f"\"{file_name}.txt\"")
         self.export_filename_label.config(bg="#009900", text=success_string,
                                           font=("Arial", "12", "bold"))
 
@@ -337,7 +333,11 @@ class HistoryExport:
             text_file.write("Here is your calculation history (oldest to newest)...\n")
 
             # write the item to file
+
+            print("calculations", calculations)
+
             for item in calculations:
+                print("temp item", item)
                 text_file.write(item)
                 text_file.write("\n")
 
